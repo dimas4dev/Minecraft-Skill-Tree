@@ -5,8 +5,8 @@ import { fetchSkillTree } from '../Api/fetchSkillTree';
 
 const parseAchievementsToNodes = (
     achievement: Achievement,
-    x = 500,
-    y = 300,
+    x = 400,
+    y = 200,
     edges: Edge[] = [],
     parentId: string | null = null,
     level = 0
@@ -18,7 +18,7 @@ const parseAchievementsToNodes = (
 
     const nodeId = achievement.name;
     const nodeWidth = 180;
-    const nodeHeight = 120;
+    const nodeHeight = 100;
 
     const nodes: Node[] = [
         {
@@ -46,15 +46,16 @@ const parseAchievementsToNodes = (
     }
 
     let childY = y - ((achievement.children.length - 1) * (nodeHeight + 20)) / 2;
-    const childX = x + 105;
+    const childX = x + nodeWidth;
 
     achievement.children?.forEach((child) => {
         nodes.push(...parseAchievementsToNodes(child, childX, childY, edges, nodeId, level + 1));
-        childY += nodeHeight + 30;
+        childY += nodeHeight;
     });
 
     return nodes;
 };
+
 
 export const skillTreeSlice = createSlice({
     name: 'Minecraft-Skill-Tree',
@@ -64,7 +65,7 @@ export const skillTreeSlice = createSlice({
             const nodeId = action.payload;
             const nodeIndex = state.nodes.findIndex(node => node.id === nodeId);
 
-            if (nodeIndex === -1) return; 
+            if (nodeIndex === -1) return;
 
             const node = state.nodes[nodeIndex];
 
