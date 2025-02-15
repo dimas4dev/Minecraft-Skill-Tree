@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Handle, Position } from '@xyflow/react';
 
-import { completeNode } from '@Redux/skillTreeSlice';
+import { completeNode } from '../../Redux/skillTreeSlice';
 
 import styles from './CustomNode.module.css';
 

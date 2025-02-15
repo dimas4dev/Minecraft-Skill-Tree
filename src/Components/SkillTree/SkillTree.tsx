@@ -1,18 +1,16 @@
 import { useEffect } from 'react';
 import { ReactFlow, Background, Controls } from '@xyflow/react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../Redux/skillTreeStore';
 
-import { fetchSkillTree } from '@Redux/skillTreeSlice';
-
-import CustomNode from '@Components/CustomNode/CustomNode';
-
+import { fetchSkillTree } from '../../Redux/skillTreeSlice';
+import CustomNode from '../CustomNode/CustomNode';
 import styles from './SkillTree.module.css';
 
 const nodeTypes = { customNode: CustomNode };
 
 const SkillTree = () => {
-    const dispatch = useDispatch();
-    const { nodes, edges, loading, error } = useSelector((state: any) => state.skillTree);
+    const dispatch = useAppDispatch();
+    const { nodes, edges, loading, error } = useAppSelector((state) => state.skillTree);
 
     useEffect(() => {
         dispatch(fetchSkillTree());

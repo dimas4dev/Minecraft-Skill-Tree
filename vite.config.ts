@@ -21,12 +21,4 @@ export default defineConfig({
             },
         },
     },
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './src'),
-            '@Components': path.resolve(__dirname, './src/Components'),
-            '@Api': path.resolve(__dirname, './src/Api'),
-            '@Redux': path.resolve(__dirname, './src/Redux'),
-        },
-    }
 });

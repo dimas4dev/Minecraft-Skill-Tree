@@ -1,6 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-
 import skillTreeReducer from './skillTreeSlice';
 
 export const skillTreeStore = configureStore({
