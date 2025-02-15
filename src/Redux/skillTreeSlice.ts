@@ -5,8 +5,8 @@ import { fetchSkillTree } from '../Api/fetchSkillTree';
 
 const parseAchievementsToNodes = (
     achievement: Achievement,
-    x = 400,
-    y = 200,
+    x = 500,
+    y = 300,
     edges: Edge[] = [],
     parentId: string | null = null,
     level = 0
@@ -18,7 +18,7 @@ const parseAchievementsToNodes = (
 
     const nodeId = achievement.name;
     const nodeWidth = 180;
-    const nodeHeight = 100;
+    const nodeHeight = 120;
 
     const nodes: Node[] = [
         {
@@ -46,11 +46,11 @@ const parseAchievementsToNodes = (
     }
 
     let childY = y - ((achievement.children.length - 1) * (nodeHeight + 20)) / 2;
-    const childX = x + nodeWidth;
+    const childX = x + nodeWidth + 10;
 
     achievement.children?.forEach((child) => {
         nodes.push(...parseAchievementsToNodes(child, childX, childY, edges, nodeId, level + 1));
-        childY += nodeHeight;
+        childY += nodeHeight + 30;
     });
 
     return nodes;
