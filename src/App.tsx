@@ -1,4 +1,5 @@
 import SkillTree from './Components/SkillTree/SkillTree';
+
 import styles from './App.module.css';
 
 function App() {
